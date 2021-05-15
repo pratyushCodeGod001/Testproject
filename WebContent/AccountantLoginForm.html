@@ -1,0 +1,40 @@
+<html>
+<head>
+   <link rel="login" href="login.css"/>
+	<script type = "text/javascript">
+		function load()
+		{
+			var	x = new XMLHttpRequest();
+			var  k = document.getElementById("email").value;
+			var urls = "AccountantCheck?var="+k;
+			x.onreadystatechange  = function()
+			{
+				//alert("call")
+				if(x.readyState == 4)
+				{
+					//document.getElementById("err").style.color="red";
+					document.getElementById("err").innerHTML = x.responseText;
+				}
+			}
+			x.open("GET",urls,true);
+			x.send();
+		}
+		 
+	</script>
+	<link rel="stylesheet" type="text/css" href="login.css">
+<link rel="stylesheet" href="resources/bootstrap.min.css"/>
+<link rel="stylesheet" href="style.css"/>
+
+	</head>
+	<body background="resources/images/accountant1.jpg"> >
+	
+	
+
+<form action="AccountantLogin" method="post"name ="f1">
+<table>
+<tr><td>Email:</td><td><input type="email" name="email"id="email" required onkeyup="load()"/></td><td><span color="red" id = "err"/></td></tr>
+<tr><td>Password:</td><td><input type="password" name="password" required/></td></tr>
+<tr><td colspan="2" align="center"><input type="submit" value="Login"/></td></tr>
+
+</table>
+</form>
